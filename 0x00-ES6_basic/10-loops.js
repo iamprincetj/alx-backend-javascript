@@ -5,4 +5,3 @@ export default function appendToEachArrayValue(array, appendString) {
 
   return array;
 }
-console.log(appendToEachArrayValue(['appended', 'fixed', 'displayed'], 'correctly-'));
