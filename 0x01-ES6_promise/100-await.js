@@ -9,5 +9,3 @@ export default async function asyncUploadUser() {
     user: func2,
   };
 }
-
-console.log(asyncUploadUser().then((res) => console.log(res)));
