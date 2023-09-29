@@ -1,19 +1,21 @@
 export default function createIteratorObject(report) {
-  const all = Object.values(report.allEmployees).reduce((a, b) => {
-    a.push(...b);
-    return a;
-  }, []);
-  let currIndex = 0;
-  const maxIndex = all.length;
   return {
-    next() {
-      if (currIndex < maxIndex) {
-        const result = { value: all[currIndex], done: false };
-        currIndex += 1;
-        return result;
-      }
-      return { value: null, done: true };
+    [Symbol.iterator]() {
+      const myList = Object.values(report.allEmployees);
+      const allMylist = myList[0].concat(myList[1]);
+      const listLen = allMylist.length;
+      let counter = 0;
+      return {
+        next() {
+          if (counter < listLen) {
+            const result = { value: allMylist[counter], done: false };
+            // eslint-disable-next-line no-plusplus
+            counter++;
+            return result;
+          }
+          return { done: true };
+        },
+      };
     },
-    [Symbol.iterator]: () => this.next(),
   };
 }
